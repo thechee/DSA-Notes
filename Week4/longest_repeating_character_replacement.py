@@ -30,6 +30,23 @@ s consists of only uppercase English letters.
 0 <= k <= s.length
 """
 
+"""
+Method:
+Use a sliding window to keep track of length
+Use a char counts hash to keep track of chars in the window
+Track max len on every iteration
+
+Iterate over the str with the r pointer
+Update the counts hash with r pointer value
+Check to see if the current length of window minus the max value of counts
+Is greater than k (meaning too many letters needed to be changed)
+Remove the left value from the hash
+Increment the l pointer
+
+Update the max len
+"""
+
+
 def character_replacement(s, k):
   # use sliding window
   # use a hash to keep counts
