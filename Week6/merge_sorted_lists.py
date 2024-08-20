@@ -27,6 +27,31 @@ The number of nodes in both lists is in the range [0, 50].
 -100 <= Node.val <= 100
 Both list1 and list2 are sorted in non-decreasing order.
 """
+from typing import Optional
 
-def merge_two_lists(list1, list2):
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
+def merge_two_lists(list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
+    dummy = ListNode()
+    current = dummy
+
+    while list1 and list2:
+        if list1.val < list2.val:
+            current.next = list1
+            list1 = list1.next
+        else: 
+            current.next = list2
+            list2 = list2.next
+            
+    current.next = list1 if list1 else list2
+
+    return dummy.next
     
+
+
+print(merge_two_lists([1,2,4], [1,3,4])) # [1, 1, 2, 3, 4, 4]
+print(merge_two_lists([], [])) # []
+print(merge_two_lists([], [0])) # [0]
